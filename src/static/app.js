@@ -498,6 +498,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Format the schedule using the new helper function
     const formattedSchedule = formatSchedule(details);
+    const shareText = `Check out the ${name} activity at Mergington High School!`;
+    const activityLink = `${window.location.origin}/static/index.html?activity=${encodeURIComponent(
+      name
+    )}`;
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      activityLink
+    )}&quote=${encodeURIComponent(shareText)}`;
+    const xShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      shareText
+    )}&url=${encodeURIComponent(activityLink)}`;
+    const emailShareUrl = `mailto:?subject=${encodeURIComponent(
+      `Mergington Activity: ${name}`
+    )}&body=${encodeURIComponent(`${shareText}\n\n${activityLink}`)}`;
 
     // Create activity tag
     const tagHtml = `
@@ -518,6 +531,36 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </div>
     `;
+    const socialShareButtons = `
+      <div class="social-share" aria-label="Share activity">
+        <span class="social-share-label">Share:</span>
+        <a
+          class="share-button facebook-share"
+          href="${facebookShareUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share ${name} on Facebook"
+        >
+          Facebook
+        </a>
+        <a
+          class="share-button x-share"
+          href="${xShareUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share ${name} on X"
+        >
+          X
+        </a>
+        <a
+          class="share-button email-share"
+          href="${emailShareUrl}"
+          aria-label="Share ${name} via email"
+        >
+          Email
+        </a>
+      </div>
+    `;
 
     activityCard.innerHTML = `
       ${tagHtml}
@@ -528,6 +571,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="tooltip-text">Regular meetings at this time throughout the semester</span>
       </p>
       ${capacityIndicator}
+      ${socialShareButtons}
       <div class="participants-list">
         <h5>Current Participants:</h5>
         <ul>
