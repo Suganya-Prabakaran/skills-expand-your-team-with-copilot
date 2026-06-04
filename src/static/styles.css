@@ -32,6 +32,32 @@
   --info-light: #d1ecf1;
 }
 
+body.dark-mode {
+  --primary: #7986cb;
+  --primary-light: #9fa8da;
+  --primary-dark: #5c6bc0;
+  --primary-text: #121212;
+  --secondary: #ffb74d;
+  --secondary-light: #ffcc80;
+  --secondary-dark: #fb8c00;
+  --secondary-text: #121212;
+  --background: #121212;
+  --surface: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --border: #3a3a3a;
+  --border-light: #2b2b2b;
+  --border-focus: #505050;
+  --success: #81c784;
+  --success-light: #1b2b1d;
+  --warning: #ffb74d;
+  --warning-light: #2e2617;
+  --error: #e57373;
+  --error-light: #2e1b1b;
+  --info: #80deea;
+  --info-light: #193238;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -621,6 +647,9 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 #user-status {
@@ -655,6 +684,10 @@ footer {
 }
 
 .user-icon {
+  font-size: 1rem;
+}
+
+#theme-toggle-icon {
   font-size: 1rem;
 }
 
